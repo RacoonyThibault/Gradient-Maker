@@ -2,6 +2,8 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { GradientState } from "./types";
 
 
+
+
 const initialState: GradientState = {
   colors: [
     { id: 1, value: "#00d2ff", position: 20 },
@@ -23,13 +25,9 @@ export const gradientSlice = createSlice({
       state,
       action: PayloadAction<{ id: number; value: string }>
     ) => {
-      const currentColor = state.colors.find(
-        (color) => color.id === action.payload.id
-      );
-      if (currentColor) {
-        currentColor.value = action.payload.value;
-      } else {
-        console.warn(`Color with ID ${action.payload.id} not found.`);
+      const color = state.colors.find((c) => c.id === action.payload.id);
+      if (color) {
+        color.value = action.payload.value;
       }
     },
     addColor: (

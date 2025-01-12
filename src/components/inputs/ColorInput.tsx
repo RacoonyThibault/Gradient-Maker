@@ -16,7 +16,10 @@ export default function ColorInput({ id, color }: ColorInputProps) {
       value={color || "#000000"}
       onChange={(e) =>
         dispatch(
-          uptdateColorValue({ id, value: e.target.value, type: "color" })
+          uptdateColorValue({
+            id,
+            value: e.target.value,
+          })
         )
       }
     />
