@@ -2,12 +2,17 @@
 import { useSelector } from "react-redux";
 import Gradient from "../components/Gradient";
 import ColorInput from "../components/inputs/ColorInput";
-import { rootState } from "../store";
+import AddRemoveColor from "@/components/AddRemoveColor";
+import RangeAngle from "@/components/inputs/RangeAngle";
+import SelectColor from "@/components/inputs/SelectColor";
+import RangeColorPosition from "@/components/inputs/RangeColorPosition";
+import OpenModalBtn from "@/components/modal/OpenModalBtn";
+import { RootState } from "../store";
 
 export default function Home() {
-  const gradientValues = useSelector((state: rootState) => state.gradient);
+  const gradientValues = useSelector((state: RootState) => state.gradient);
   return (
-    <div className="relative max-w-xl mx-auto mt-20 p-4 border border-slate-400 flex">
+    <div className="relative max-w-4xl mx-auto mt-20 p-4 border border-slate-400 flex">
       <div className="w-1/2 p-4 pr-8">
         <h1 className="text-center text-xl">Gradient Generator</h1>
         <p className="text-center mb-6">
@@ -20,17 +25,17 @@ export default function Home() {
           ))}
         </div>
         <div className="flex mb-2 gap-1 ">
-          <button className="w-12 border border-slate-400 rounded-md">-</button>
-          <button className="w-12 border border-slate-400 rounded-md">+</button>
+        <AddRemoveColor action={"remove"} text={"-"}/>
+        <AddRemoveColor action={"add"} text={"+"}/>
         </div>
         <p>Choisir et modifier la position d&rsquo;une couleur</p>
-        {/* {SelectColor} */}
+        <SelectColor/>
         <p>Position de la couleur</p>
-        {/* {RangeColor}*/}
+        <RangeColorPosition/>
         <p>Angle global du gradient</p>
-        {/* {RangeAngle} */}
+        <RangeAngle/>
 
-        {/* {OpenModalBtn} */}
+        <OpenModalBtn />
       </div>
       <Gradient />
     </div>
